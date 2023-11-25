@@ -25,7 +25,7 @@ function findLongestWord(wordsArray) {
   else {
     for (let i = 0; i < wordsArray.length; i++) {
       let currentWord = wordsArray[i];
-       if (currentWord.length > longestWord.length) {
+      if (currentWord.length > longestWord.length) {
         longestWord = currentWord
       }
     }
@@ -132,18 +132,18 @@ const wordsUnique = [
 
 function uniquifyArray(arr) {
   let uniqueArray = [];
-    if (arr.length == 0) {
-      return null    
-    }
-    else {
-      for (let index = 0; index < arr.length; index++) {
-        let currWord = arr[index];
-        if (uniqueArray.indexOf(currWord) === -1) {
-          uniqueArray.push(currWord)
-         } 
-        }
+  if (arr.length == 0) {
+    return null
+  }
+  else {
+    for (let index = 0; index < arr.length; index++) {
+      let currWord = arr[index];
+      if (uniqueArray.indexOf(currWord) === -1) {
+        uniqueArray.push(currWord)
       }
-      return uniqueArray    
+    }
+  }
+  return uniqueArray
 }
 console.log(uniquifyArray(wordsUnique));
 
@@ -152,7 +152,20 @@ console.log(uniquifyArray(wordsUnique));
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() { }
+function doesWordExist(arr, word) {
+
+  if (arr.length === 0) {
+    return null
+  }
+  else {
+    if (arr.indexOf(word) > -1) {
+      return true
+    }
+    else {
+      return false
+    }
+  }
+}
 
 
 
@@ -171,7 +184,25 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTimes() { }
+function howManyTimes(arr, searchedWord) {
+  let count = 0;
+  if (arr.length === 0) {
+    count = 0
+  }
+  else {
+    arr.forEach(element => {
+      if (element === searchedWord) {
+        count += 1
+      }
+      else {
+        count
+      }
+    })
+  }
+  return count
+}
+
+console.log(howManyTimes(wordsCount, 'matter'));
 
 
 
@@ -199,7 +230,28 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() { }
+function greatestProduct(arr) {
+  let prodArray = [];
+  let numRows = arr.length;
+  let numCol = arr[0].length;
+
+  for (let i = 0; i < numRows; i++) {
+    for (let j = 0; j < numCol; j++) {
+      if (i + 3 < numRows) {
+        let prodVertical = arr[i][j] * arr[i + 1][j] * arr[i + 2][j] * arr[i + 3][j]
+        prodArray.push(prodVertical)
+      }
+      if (j + 3 < numCol) {
+        let prodHorisontal = arr[i][j] * arr[i][j + 1] * arr[i][j + 2] * arr[i][j + 3]
+        prodArray.push(prodHorisontal)
+      }
+    }
+
+
+  }
+  return Math.max(...prodArray)
+}
+console.log(greatestProduct(matrix));
 
 
 
