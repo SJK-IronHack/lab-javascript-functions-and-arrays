@@ -55,20 +55,33 @@ function sum(array) {
 
   let sumWordsLength = 0;
 
-  array.forEach(element => {
-    if (array.length == 0) {
-      return null
-    }
-    else if (element.typeof === "number") {
-      sumWordsLength += element
-    }
-    else {
-      sumWordsLength += element.length
 
-    }
-  });
+  if (array.every(element => typeof element === 'number')) {
+    array.forEach(element => {
+      sumWordsLength += element
+    })
+  }
+  if (array.every(element => typeof element === 'string')) {
+    array.forEach(element => {
+      sumWordsLength += element.length
+    })
+  }
+  if (array.length === 0) {
+    return null
+  }
+  else {
+    array.forEach(element => {
+      if (typeof element === "number") {
+        sumWordsLength += element
+      }
+      if (typeof element === "string") {
+        sumWordsLength += element.length
+      }
+    })
+  }
   return sumWordsLength
-}
+};
+
 // console.log(sum(mixedArr));
 
 
